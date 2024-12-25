@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main() {
+int main() {
     printf("#############################\n");
     printf("#  Welcome to kevin's shop  #\n");
     printf("#############################\n");
@@ -8,8 +8,8 @@ void main() {
     printf("1. nasi\n");
     printf("2. bakmi\n");
 
-    char user_input[1];
+    int user_input = 0;
     printf("hmm gw mau ");
-    scanf("%s", &user_input);
-    printf("oh lu mau pesen %s oke\n", user_input);
+    scanf("%d", &user_input);
+    printf("oh lu mau pesen nomor %d oke\n", user_input);
 }

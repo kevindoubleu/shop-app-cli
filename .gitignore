@@ -4,6 +4,9 @@
 *.ilk
 *.pdb
 
+# linux / osx
+*
+
 # Prerequisites
 *.d
 
@@ -38,5 +41,6 @@
 *.app
 
 ## IDE and Editors
-
 .vscode
+
+
