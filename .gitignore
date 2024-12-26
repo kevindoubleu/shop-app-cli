@@ -5,7 +5,7 @@
 *.pdb
 
 # linux / osx
-*
+shop
 
 # Prerequisites
 *.d

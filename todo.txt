@@ -1,0 +1,13 @@
+ep 1
+[x] print hi
+[x] take user input string
+
+ep 2
+[x] take user input as int
+[ ] handle unexpected user input (not int)
+[x] use user input for logic
+
+ep 3
+[ ] simple loop to buy repeatedly and be able to exit
+    [ ] while loop
+    [ ] for loop

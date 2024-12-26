@@ -2,11 +2,12 @@
 
 int main() {
     printf("#############################\n");
-    printf("#  Welcome to kevin's shop  #\n");
+    printf("#   Welcome to my warteg    #\n");
     printf("#############################\n");
-    printf("mau pesen apa bro\n");
+    printf("mau pesen apa dek\n");
     printf("1. nasi\n");
     printf("2. bakmi\n");
+    printf("2. es krim\n");
 
     int user_input = 0;
     printf("hmm gw mau nomor ");
@@ -20,8 +21,11 @@ int main() {
         case 2:
             printf("oh lu mau pesen bakmi oke\n");
             break;
+        case 3:
+            printf("oh lu mau es krim aja oke\n");
+            break;
         default:
-            printf("lu mau pesen apa sih, nomor 1 ato 2 pilih\n");
+            printf("lu mau pesen apa sih, pilih nomor 1-3\n");
             break;
     }
 }
