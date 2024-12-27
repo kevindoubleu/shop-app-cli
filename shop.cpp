@@ -12,10 +12,12 @@ int main() {
     printf("4. exit, ga jadi\n");
 
     // list feedback buat dikasih ke user
-    char feedback_1[] = "oh lu mau pesen nasi oke";
-    char feedback_2[] = "oh lu mau pesen bakmi oke";
-    char feedback_3[] = "oh lu mau es krim aja oke";
-    char feedback_4[] = "oh ga jadi yaudah gpp";
+    char feedback[][50] = {
+        "oh lu mau pesen nasi oke",
+        "oh lu mau pesen bakmi oke",
+        "oh lu mau es krim aja oke",
+        "oh ga jadi yaudah gpp",
+    };
     char feedback_invalid_input[] = "lu mau pesen apa sih, pilih nomor 1-3";
 
     int user_input = 0;
@@ -29,19 +31,19 @@ int main() {
         // kasih feedback ke user tentang pilihannya
         if (user_input == 1)
         {
-            printf("option 1: %s\n", feedback_1);
+            printf("option 1: %s\n", feedback[0]);
         }
         else if (user_input == 2)
         {
-            printf("option 2: %s\n", feedback_2);
+            printf("option 2: %s\n", feedback[1]);
         }
         else if (user_input == 3)
         {
-            printf("option 3: %s\n", feedback_3);
+            printf("option 3: %s\n", feedback[2]);
         }
         else if (user_input == 4)
         {
-            printf("option 4: %s\n", feedback_4);
+            printf("option 4: %s\n", feedback[3]);
             break;
         }
         else
