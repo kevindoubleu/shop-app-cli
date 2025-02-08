@@ -4,10 +4,16 @@ ep 1
 
 ep 2
 [x] take user input as int
-[ ] handle unexpected user input (not int)
+[x] handle unexpected user input (int)
+    [ ] handle unexpected user input (not int)
 [x] use user input for logic
 
 ep 3
-[ ] simple loop to buy repeatedly and be able to exit
-    [ ] while loop
-    [ ] for loop
+[x] simple loop to ask user again if input is invalid
+    [x] while loop
+    [x] exit the while loop
+
+ep 4
+[x] define and use arrays
+    [x] use arrays with while loop
+    [ ] use arrays with for loop

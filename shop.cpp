@@ -6,10 +6,27 @@ int main() {
     printf("#   Welcome to my warteg    #\n");
     printf("#############################\n");
     printf("mau pesen apa dek\n");
-    printf("1. nasi\n");
-    printf("2. bakmi\n");
-    printf("3. es krim\n");
-    printf("4. exit, ga jadi\n");
+
+    // list menu
+    char menu[][50] = {
+        "nasi",
+        "bakmi",
+        "es krim",
+        "exit, ga jadi"
+    };
+    // pseudocode kalo ga pake loop
+    // print menu[0]
+    // print menu[1]
+    // print menu[2]
+    // print menu[3]
+
+    int counter = 0;
+    while (counter < 4)
+    {
+        printf("%d. %s\n", counter, menu[counter]);
+
+        counter++;
+    }
 
     // list feedback buat dikasih ke user
     char feedback[][50] = {
