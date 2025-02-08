@@ -16,4 +16,10 @@ ep 3
 ep 4
 [x] define and use arrays
     [x] use arrays with while loop
-    [ ] use arrays with for loop
+    [x] use arrays with for loop
+
+ep 5
+[ ] organize code into funcs
+
+ep 6
+[ ] organize data into models (structs)

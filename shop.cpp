@@ -14,19 +14,10 @@ int main() {
         "es krim",
         "exit, ga jadi"
     };
-    // pseudocode kalo ga pake loop
-    // print menu[0]
-    // print menu[1]
-    // print menu[2]
-    // print menu[3]
-
-    int counter = 0;
-    while (counter < 4)
+    for (int menu_number = 0; menu_number < 4; menu_number++)
     {
-        printf("%d. %s\n", counter, menu[counter]);
-
-        counter++;
-    }
+        printf("%d. %s\n", menu_number+1, menu[menu_number]);
+    }    
 
     // list feedback buat dikasih ke user
     char feedback[][50] = {
