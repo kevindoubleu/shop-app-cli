@@ -20,6 +20,8 @@ ep 4
 
 ep 5
 [ ] organize code into funcs
+    [ ] func prototypes
 
 ep 6
 [ ] organize data into models (structs)
+[ ] organize everything into files

@@ -1,11 +1,14 @@
 #include <stdio.h>
 
-int main() {
-    // welcome + menu
+void print_welcome_banner() {
     printf("#############################\n");
     printf("#   Welcome to my warteg    #\n");
     printf("#############################\n");
     printf("mau pesen apa dek\n");
+}
+
+int main() {
+    print_welcome_banner();
 
     // list menu
     char menu[][50] = {
@@ -17,7 +20,7 @@ int main() {
     for (int menu_number = 0; menu_number < 4; menu_number++)
     {
         printf("%d. %s\n", menu_number+1, menu[menu_number]);
-    }    
+    }
 
     // list feedback buat dikasih ke user
     char feedback[][50] = {
