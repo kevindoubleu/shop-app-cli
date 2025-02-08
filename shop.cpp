@@ -1,29 +1,44 @@
 #include <stdio.h>
 
+struct Menu
+{
+    const char* name;
+    const char* description;
+    int price;
+};
+
 void print_welcome_banner();
-void print_menu(char menu[][50], int menu_count);
-int ask_user_input(char feedback[][50], char feedback_invalid_input[]);
+void print_menu(Menu menus[], int menu_count);
+int ask_user_input(Menu menus[], int menu_count);
+void build_menu_detail(Menu menu, char* result);
 
 int main() {
     print_welcome_banner();
 
-    char menu[][50] = {
-        "nasi",
-        "bakmi",
-        "es krim",
-        "exit, ga jadi"
+    Menu nasi = {
+        .name = "nasi",
+        .description = "nasi putih",
+        .price = 5
     };
-    print_menu(menu, 4);
+    Menu bakmi = {
+        .name = "bakmi",
+        .description = "bakmi ayam",
+        .price = 20
+    };
+    Menu eskrim = {
+        .name = "es krim",
+        .description = "es krim vanilla 1 scoop",
+        .price = 8
+    };
+    Menu menus[] = {
+        nasi,
+        bakmi,
+        eskrim
+    };
+    
+    print_menu(menus, 3);
 
-    // list feedback buat dikasih ke user
-    char feedback[][50] = {
-        "oh lu mau pesen nasi oke",
-        "oh lu mau pesen bakmi oke",
-        "oh lu mau es krim aja oke",
-        "oh ga jadi yaudah gpp",
-    };
-    char feedback_invalid_input[] = "lu mau pesen apa sih, pilih nomor 1-3";
-    int user_choice = ask_user_input(feedback, feedback_invalid_input);
+    ask_user_input(menus, 3);
     
     printf("terima kasih udah dateng ke my warteg\n");
 }
@@ -35,26 +50,32 @@ void print_welcome_banner() {
     printf("mau pesen apa dek\n");
 }
 
-void print_menu(char menu[][50], int menu_count) {
-    for (int menu_number = 0; menu_number < menu_count; menu_number++)
+void print_menu(Menu menus[], int menu_count) {
+    for (int i = 0; i < menu_count; i++)
     {
-        printf("%d. %s\n", menu_number+1, menu[menu_number]);
+        printf("%d. %s\n", i+1, menus[i].name);
     }
 }
 
-int ask_user_input(char feedback[][50], char feedback_invalid_input[]) {
+int ask_user_input(Menu menus[], int menu_count) {
     int user_input = 0;
 
     printf("hmm gw mau nomor > ");
     scanf("%d", &user_input);
 
     // user input is invalid number
-    if (user_input < 1 || user_input > 4)
+    if (user_input < 1 || user_input > menu_count)
     {
-        printf("%s\n", feedback_invalid_input);
+        printf("pilih yg bener bro, adanya cuman 1-%d\n", menu_count);
         return 0;
     }
     
-    printf("lu pilih nomor %d: %s\n", user_input, feedback[user_input-1]);
+    char menu_detail[100] = "";
+    build_menu_detail(menus[user_input-1], menu_detail);
+    printf("oke gw bikinin nomor %d\n%s\n", user_input, menu_detail);
     return user_input;
+}
+
+void build_menu_detail(Menu menu, char* result) {
+    snprintf(result, 100, "Menu %s\n%s\nHarga: Rp%d.000,-\n", menu.name, menu.description, menu.price);
 }

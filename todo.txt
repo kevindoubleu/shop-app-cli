@@ -29,8 +29,12 @@ ep 5b
     [x] func prototypes
 
 ep 6
-[ ] organize data into models (structs)
+[x] organize data into models (structs)
 [ ] organize everything into files
 
 ep 7
 [ ] docs to help yourself
+
+--------
+
+
