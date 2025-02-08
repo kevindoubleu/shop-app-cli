@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 struct Menu
 {
@@ -8,9 +10,12 @@ struct Menu
 };
 
 void print_welcome_banner();
+void ask_user_input(Menu menus[], int menu_count);
 void print_menu(Menu menus[], int menu_count);
-int ask_user_input(Menu menus[], int menu_count);
+void print_what_else_banner();
 void build_menu_detail(Menu menu, char* result);
+
+int total = 0;
 
 int main() {
     print_welcome_banner();
@@ -36,11 +41,9 @@ int main() {
         eskrim
     };
     
-    print_menu(menus, 3);
-
     ask_user_input(menus, 3);
     
-    printf("terima kasih udah dateng ke my warteg\n");
+    printf("terima kasih udah dateng ke my warteg 🖐 😁\n");
 }
 
 void print_welcome_banner() {
@@ -51,29 +54,62 @@ void print_welcome_banner() {
 }
 
 void print_menu(Menu menus[], int menu_count) {
+    if (total > 0) print_what_else_banner();
+
     for (int i = 0; i < menu_count; i++)
     {
         printf("%d. %s\n", i+1, menus[i].name);
     }
+
+    if (total == 0)
+    {
+        printf("0. ga jadi\n");
+    }
+    else
+    {
+        printf("0. udah itu aja\n");
+        printf("#############################\n");
+        printf("Total: Rp%d.000,-\n", total);
+    }
+
+    printf("#############################\n");
 }
 
-int ask_user_input(Menu menus[], int menu_count) {
-    int user_input = 0;
+void print_what_else_banner() {
+    printf("#############################\n");
+    printf("#    Mau pesen apa lagi?    #\n");
+    printf("#############################\n");
+}
 
-    printf("hmm gw mau nomor > ");
-    scanf("%d", &user_input);
+void ask_user_input(Menu menus[], int menu_count) {
+    int choice = 0;
 
-    // user input is invalid number
-    if (user_input < 1 || user_input > menu_count)
+    while (true)
     {
-        printf("pilih yg bener bro, adanya cuman 1-%d\n", menu_count);
-        return 0;
+        print_menu(menus, menu_count);
+
+        printf("hmm gw mau nomor > ");
+        scanf("%d", &choice);
+        fflush(stdin);
+
+        // if user is done
+        if (choice == 0)
+        {
+            break;
+        }
+
+        // if user input is invalid number
+        if (choice < 1 || choice > menu_count)
+        {
+            printf("pilih yg bener bro, adanya cuman 1-%d\n", menu_count);
+            continue;
+        }
+        
+        char menu_detail[100] = "";
+        build_menu_detail(menus[choice-1], menu_detail);
+        printf("oke gw bikinin nomor %d\n%s\n", choice, menu_detail);
+        total += menus[choice-1].price;
     }
-    
-    char menu_detail[100] = "";
-    build_menu_detail(menus[user_input-1], menu_detail);
-    printf("oke gw bikinin nomor %d\n%s\n", user_input, menu_detail);
-    return user_input;
 }
 
 void build_menu_detail(Menu menu, char* result) {
