@@ -25,7 +25,7 @@ ep 5
     [x] 1 arg funcs
     [x] multiple arg funcs
 ep 5b
-    [ ] funcs that return values
+    [x] funcs that return values
     [ ] func prototypes
 
 ep 6

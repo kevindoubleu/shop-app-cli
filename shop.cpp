@@ -20,15 +20,14 @@ int ask_user_input(char feedback[][50], char feedback_invalid_input[]) {
     printf("hmm gw mau nomor > ");
     scanf("%d", &user_input);
 
-    if (user_input >= 1 && user_input <= 4)
-    {
-        printf("pilihan nomor %d: %s\n", user_input, feedback[user_input-1]);
-    }
-    else
+    // user input is invalid number
+    if (user_input < 1 || user_input > 4)
     {
         printf("%s\n", feedback_invalid_input);
+        return 0;
     }
     
+    printf("lu pilih nomor %d: %s\n", user_input, feedback[user_input-1]);
     return user_input;
 }
 
