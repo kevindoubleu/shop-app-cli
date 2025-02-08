@@ -2,17 +2,11 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-struct Menu
-{
-    const char* name;
-    const char* description;
-    int price;
-};
+#include "menu_list.cpp"
+#include "banner.cpp"
 
-void print_welcome_banner();
 void ask_user_input(Menu menus[], int menu_count);
 void print_menu(Menu menus[], int menu_count);
-void print_what_else_banner();
 void build_menu_detail(Menu menu, char* result);
 
 int total = 0;
@@ -20,37 +14,11 @@ int total = 0;
 int main() {
     print_welcome_banner();
 
-    Menu nasi = {
-        .name = "nasi",
-        .description = "nasi putih",
-        .price = 5
-    };
-    Menu bakmi = {
-        .name = "bakmi",
-        .description = "bakmi ayam",
-        .price = 20
-    };
-    Menu eskrim = {
-        .name = "es krim",
-        .description = "es krim vanilla 1 scoop",
-        .price = 8
-    };
-    Menu menus[] = {
-        nasi,
-        bakmi,
-        eskrim
-    };
-    
-    ask_user_input(menus, 3);
+    Menu menu_list[100];
+    int menu_count = populate_menu(menu_list);
+    ask_user_input(menu_list, menu_count);
     
     printf("terima kasih udah dateng ke my warteg 🖐 😁\n");
-}
-
-void print_welcome_banner() {
-    printf("#############################\n");
-    printf("#   Welcome to my warteg    #\n");
-    printf("#############################\n");
-    printf("mau pesen apa dek\n");
 }
 
 void print_menu(Menu menus[], int menu_count) {
@@ -72,12 +40,6 @@ void print_menu(Menu menus[], int menu_count) {
         printf("Total: Rp%d.000,-\n", total);
     }
 
-    printf("#############################\n");
-}
-
-void print_what_else_banner() {
-    printf("#############################\n");
-    printf("#    Mau pesen apa lagi?    #\n");
     printf("#############################\n");
 }
 

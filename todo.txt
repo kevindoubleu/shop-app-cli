@@ -30,11 +30,7 @@ ep 5b
 
 ep 6
 [x] organize data into models (structs)
-[ ] organize everything into files
+[x] organize everything into files
 
 ep 7
-[ ] docs to help yourself
-
---------
-
-
+[x] docs to help yourself
