@@ -12,6 +12,7 @@ ep 3
 [x] simple loop to ask user again if input is invalid
     [x] while loop
     [x] exit the while loop
+    [ ] continue the while loop
 
 ep 4
 [x] define and use arrays
@@ -23,9 +24,13 @@ ep 5
     [x] no arg funcs
     [x] 1 arg funcs
     [x] multiple arg funcs
+ep 5b
     [ ] funcs that return values
     [ ] func prototypes
 
 ep 6
 [ ] organize data into models (structs)
 [ ] organize everything into files
+
+ep 7
+[ ] docs to help yourself
