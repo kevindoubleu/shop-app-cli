@@ -22,7 +22,7 @@ ep 5
 [ ] organize code into funcs
     [x] no arg funcs
     [x] 1 arg funcs
-    [ ] multiple arg funcs
+    [x] multiple arg funcs
     [ ] funcs that return values
     [ ] func prototypes
 
