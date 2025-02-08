@@ -7,20 +7,23 @@ void print_welcome_banner() {
     printf("mau pesen apa dek\n");
 }
 
+void print_menu(char menu[][50]) {
+    for (int menu_number = 0; menu_number < 4; menu_number++)
+    {
+        printf("%d. %s\n", menu_number+1, menu[menu_number]);
+    }
+}
+
 int main() {
     print_welcome_banner();
 
-    // list menu
     char menu[][50] = {
         "nasi",
         "bakmi",
         "es krim",
         "exit, ga jadi"
     };
-    for (int menu_number = 0; menu_number < 4; menu_number++)
-    {
-        printf("%d. %s\n", menu_number+1, menu[menu_number]);
-    }
+    print_menu(menu);
 
     // list feedback buat dikasih ke user
     char feedback[][50] = {
