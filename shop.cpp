@@ -2,18 +2,15 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#include "menu_list.cpp"
 #include "banner.cpp"
 
 void ask_user_input(Menu menus[], int menu_count);
-void print_menu(Menu menus[], int menu_count);
 void build_menu_detail(Menu menu, char* result);
+int prompt_user(const char* prompt);
 
 int total = 0;
 
 int main() {
-    print_welcome_banner();
-
     Menu menu_list[100];
     int menu_count = populate_menu(menu_list);
     ask_user_input(menu_list, menu_count);
@@ -21,38 +18,14 @@ int main() {
     printf("terima kasih udah dateng ke my warteg 🖐 😁\n");
 }
 
-void print_menu(Menu menus[], int menu_count) {
-    if (total > 0) print_what_else_banner();
-
-    for (int i = 0; i < menu_count; i++)
-    {
-        printf("%d. %s\n", i+1, menus[i].name);
-    }
-
-    if (total == 0)
-    {
-        printf("0. ga jadi\n");
-    }
-    else
-    {
-        printf("0. udah itu aja\n");
-        printf("#############################\n");
-        printf("Total: Rp%d.000,-\n", total);
-    }
-
-    printf("#############################\n");
-}
-
 void ask_user_input(Menu menus[], int menu_count) {
-    int choice = 0;
-
     while (true)
     {
+        print_welcome_banner();
         print_menu(menus, menu_count);
+        print_subtotal(total);
 
-        printf("hmm gw mau nomor > ");
-        scanf("%d", &choice);
-        fflush(stdin);
+        int choice = prompt_user("I'd like to order number > ");
 
         // if user is done
         if (choice == 0)
@@ -68,12 +41,29 @@ void ask_user_input(Menu menus[], int menu_count) {
         }
         
         char menu_detail[100] = "";
-        build_menu_detail(menus[choice-1], menu_detail);
-        printf("oke gw bikinin nomor %d\n%s\n", choice, menu_detail);
         total += menus[choice-1].price;
+        animate_order_process();
     }
 }
 
-void build_menu_detail(Menu menu, char* result) {
-    snprintf(result, 100, "Menu %s\n%s\nHarga: Rp%d.000,-\n", menu.name, menu.description, menu.price);
+int prompt_user(const char* prompt) {
+    int choice = 0;
+
+    while (true)
+    {
+        printf("%s", prompt);
+        int successful_reads = scanf("%d", &choice);
+        if (successful_reads != 1)
+        {
+            int c = getchar();
+            while (c != '\n')
+            {
+                c = getchar();
+            }
+            continue;
+        }
+        break;
+    }
+
+    return choice;
 }
