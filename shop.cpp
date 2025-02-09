@@ -15,7 +15,7 @@ int main() {
     int menu_count = populate_menu(menu_list);
     ask_user_input(menu_list, menu_count);
     
-    printf("terima kasih udah dateng ke my warteg 🖐 😁\n");
+    print_exit_banner(total > 0);
 }
 
 void ask_user_input(Menu menus[], int menu_count) {

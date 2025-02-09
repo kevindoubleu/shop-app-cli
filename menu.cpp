@@ -14,17 +14,14 @@ struct Menu
 int populate_menu(Menu list[]) {
     Menu nasi = {
         .name = "nasi",
-        .description = "nasi putih",
         .price = 5
     };
     Menu bakmi = {
         .name = "bakmi",
-        .description = "bakmi ayam",
         .price = 20
     };
     Menu eskrim = {
         .name = "es krim",
-        .description = "es krim vanilla 1 scoop",
         .price = 8
     };
 

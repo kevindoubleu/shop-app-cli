@@ -84,3 +84,29 @@ void animate_order_process() {
     }
     printf("\033[2B\n");
 }
+
+void print_exit_banner(bool ordered_something) {
+    if (ordered_something == true)
+    {
+        printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", YELLOW);
+        printf("┃          🥝 %s%sKIWI  SHOP 🥝            %s%s┃\n", GREEN, BOLD, RESET, YELLOW);
+        printf("┃                                      ┃\n");
+        printf("┃    %sPlease have a seat while we       %s┃\n", RESET, YELLOW);
+        printf("┃       %scook up your order 🍳😋        %s┃\n", RESET, YELLOW);
+        printf("┃                                      ┃\n");
+        printf("┃           %sThank you 🖐 😁             %s┃\n", RESET, YELLOW);
+        printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+        printf("%s\n", RESET);        
+    }
+    else
+    {
+        printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", YELLOW);
+        printf("┃          🥝 %s%sKIWI  SHOP 🥝            %s%s┃\n", GREEN, BOLD, RESET, YELLOW);
+        printf("┃                                      ┃\n");
+        printf("┃   %sWe hope you enjoyed your visit 🥰  %s┃\n", RESET, YELLOW);
+        printf("┃                                      ┃\n");
+        printf("┃           %sThank you 🖐 😁             %s┃\n", RESET, YELLOW);
+        printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+        printf("%s\n", RESET);
+    }
+}
