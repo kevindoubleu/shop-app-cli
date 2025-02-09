@@ -2,7 +2,7 @@
 struct Menu
 {
     const char* name;
-    const char* description;
+    const char* emoji;
     int price;
 };
 
@@ -14,14 +14,17 @@ struct Menu
 int populate_menu(Menu list[]) {
     Menu nasi = {
         .name = "nasi",
+        .emoji = "🍚",
         .price = 5
     };
     Menu bakmi = {
         .name = "bakmi",
+        .emoji = "🍜",
         .price = 20
     };
     Menu eskrim = {
         .name = "es krim",
+        .emoji = "🍦",
         .price = 8
     };
 

@@ -27,6 +27,7 @@ const char* WHITE_BG = "\033[47m";
  * Prints banner when the user first enters
  */
 void print_welcome_banner() {
+    printf("\n\n");
     printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", YELLOW);
     printf("┃ %s 🍜 🍉 🍪 🍤 🥗 🍓 🍩 🍣 🍇 🍕 🍔 🍎%s%s ┃\n", GREEN_BG, RESET, YELLOW);
     printf("┃                                      ┃\n");
@@ -38,7 +39,7 @@ void print_welcome_banner() {
     printf("%s\n", RESET);
 }
 
-void print_menu(Menu list[], int count) {
+void print_menu(Menu list[], int count, int total) {
     printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", CYAN);
     printf("┃                                      ┃\n");
     printf("┃  %sWhat would you like to order?%s 🧑‍🍳    ┃\n", YELLOW, CYAN);
@@ -51,27 +52,43 @@ void print_menu(Menu list[], int count) {
         printf("┃%s %2d ) %-15s%15s  %s┃\n", RESET, i+1, list[i].name, formatted_price, CYAN);
     }
 
+    printf("┃ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ ┃\n");
+
+    if (total > 0)
+    {
+        char formatted_total[50];
+        snprintf(formatted_total, 50, "Rp%d.000,-", total);
+        printf("┃ %s%s %-17s%17s %s%s ┃\n", 
+            WHITE_BG, BLACK,
+            "0 ) Checkout", formatted_total,
+            RESET, CYAN);
+    }
+    else
+    {
+        printf("┃%s  0 ) Exit                            %s┃\n", RESET, CYAN);
+    }
+    
     printf("┃                                      ┃\n");
     printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
     printf("%s\n", RESET);
 }
 
-void print_subtotal(int subtotal) {
-    if (subtotal == 0) return;
+void print_cart(char* cart, bool checkout) {
+    if (strlen(cart) == 0) return;
 
-    char formatted_total[50];
-    snprintf(formatted_total, 50, "Rp%d.000,-", subtotal);
-    
+    const char* prompt = "In cart";
+    if (checkout) prompt = "Cooking up";
+
     printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", GREEN);
-    printf("┃ %s%s%s%-18s%18s%s%s ┃\n", RESET, WHITE_BG, BLACK, "Current total:", formatted_total, RESET, GREEN);
-    printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+    printf("┃ %s%s: %s\n", RESET, prompt, cart);
+    printf("%s┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n", GREEN);
     printf("%s\n", RESET);
 }
 
-void animate_order_process() {
+void animate_order_process(Menu item) {
     printf("%s\n", RESET);
     printf("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
-    printf("┃              Processing              ┃\n");
+    printf("┃          Adding %s to cart           ┃\n", item.emoji);
     printf("┃                                      ┃\n");
     printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
     printf("\033[2A");
@@ -79,17 +96,19 @@ void animate_order_process() {
     for (int i = 0; i < 36; i++)
     {
         printf(".");
-        usleep(10000);
+        usleep(20000);
         fflush(stdout);
     }
     printf("\033[2B\n");
 }
 
-void print_exit_banner(bool ordered_something) {
-    if (ordered_something == true)
+void print_exit_banner(int total) {
+    if (total > 0)
     {
         printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", YELLOW);
         printf("┃          🥝 %s%sKIWI  SHOP 🥝            %s%s┃\n", GREEN, BOLD, RESET, YELLOW);
+        printf("┃                                      ┃\n");
+        printf("┃    Your total is Rp%d.000,- 📃       ┃\n", total);
         printf("┃                                      ┃\n");
         printf("┃    %sPlease have a seat while we       %s┃\n", RESET, YELLOW);
         printf("┃       %scook up your order 🍳😋        %s┃\n", RESET, YELLOW);
