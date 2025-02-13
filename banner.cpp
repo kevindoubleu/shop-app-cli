@@ -42,7 +42,7 @@ void print_welcome_banner() {
 void print_menu(Menu list[], int count, int total) {
     printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", CYAN);
     printf("┃                                      ┃\n");
-    printf("┃  %sWhat would you like to order?%s 🧑‍🍳    ┃\n", YELLOW, CYAN);
+    printf("┃  %sWhat would you like to order?%s 🍽️     ┃\n", YELLOW, CYAN);
     printf("┃                                      ┃\n");
 
     for (int i = 0; i < count; i++)
@@ -60,7 +60,7 @@ void print_menu(Menu list[], int count, int total) {
         snprintf(formatted_total, 50, "Rp%d.000,-", total);
         printf("┃ %s%s %-17s%17s %s%s ┃\n", 
             WHITE_BG, BLACK,
-            "0 ) Checkout", formatted_total,
+            "0 ) Checkout cart", formatted_total,
             RESET, CYAN);
     }
     else
@@ -102,13 +102,32 @@ void animate_order_process(Menu item) {
     printf("\033[2B\n");
 }
 
+void animate_checkout(char* cart) {
+    if (strlen(cart) == 0) return;
+
+    printf("%s\n", RESET);
+    printf("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n");
+    printf("┃ Checking out %s\n", cart);
+    printf("┃                                      ┃\n");
+    printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+    printf("\033[2A");
+    printf("\033[2C");
+    for (int i = 0; i < 36; i++)
+    {
+        printf(".");
+        usleep(20000);
+        fflush(stdout);
+    }
+    printf("\033[2B\n");
+}
+
 void print_exit_banner(int total) {
     if (total > 0)
     {
         printf("%s┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n", YELLOW);
         printf("┃          🥝 %s%sKIWI  SHOP 🥝            %s%s┃\n", GREEN, BOLD, RESET, YELLOW);
         printf("┃                                      ┃\n");
-        printf("┃    Your total is Rp%d.000,- 📃       ┃\n", total);
+        printf("┃   %s%s Your total is Rp%d.000,- 📃 %s      %s┃\n", GREEN_BG, BLACK, total, RESET, YELLOW);
         printf("┃                                      ┃\n");
         printf("┃    %sPlease have a seat while we       %s┃\n", RESET, YELLOW);
         printf("┃       %scook up your order 🍳😋        %s┃\n", RESET, YELLOW);

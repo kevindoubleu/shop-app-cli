@@ -15,6 +15,8 @@ int main() {
     int menu_count = populate_menu(menu_list);
     menu_prompt(menu_list, menu_count);
     
+    printf("\n\n\n\n\n");
+    animate_checkout(cart);
     print_exit_banner(total);
     print_cart(cart, true);
 }
@@ -22,6 +24,7 @@ int main() {
 void menu_prompt(Menu menus[], int menu_count) {
     while (true)
     {
+        printf("\n\n\n\n\n");
         print_welcome_banner();
         print_menu(menus, menu_count, total);
         print_cart(cart, false);
